@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:icecreamshop/home/model/user_model.dart';
+import '../../model/user_model.dart';
 
-import 'package:icecreamshop/home/model/ice_cream_model.dart';
+import '../../model/ice_cream_model.dart';
 
 import '../main/main_database_service.dart';
 

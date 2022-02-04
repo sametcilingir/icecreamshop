@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 
+import '../../core/app/my_color.dart';
+
 class CategoryWidget extends StatelessWidget {
   final String? productCategory;
   final String? productMiniImage;
-  final Color? productColor;
+  final String? productColor;
   
   const CategoryWidget({
     Key? key,
@@ -24,7 +26,7 @@ class CategoryWidget extends StatelessWidget {
           width: 40,
           margin: EdgeInsets.only(right: 1),
           decoration: BoxDecoration(
-            color: productColor,
+            color: MyColor.transformColor(productColor!),
             borderRadius: BorderRadius.circular(5),
           ),
           child: Image.network(
@@ -35,7 +37,7 @@ class CategoryWidget extends StatelessWidget {
           height: 40,
           padding: EdgeInsets.all(10),
           decoration: BoxDecoration(
-            color: productColor?.withOpacity(0.3),
+            color: MyColor.transformColor(productColor!)?.withOpacity(0.3),
             borderRadius: BorderRadius.only(
               topRight: Radius.circular(5),
               bottomRight: Radius.circular(5),

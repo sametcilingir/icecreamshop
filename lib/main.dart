@@ -1,9 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:icecreamshop/home/view_model/view_model.dart';
+import 'core/app/my_route.dart';
+import 'core/app/my_theme.dart';
 import 'firebase_options.dart';
-import 'home/view/detail_screen.dart';
-import 'home/view/home_screen.dart';
 import 'locator.dart';
 
 Future<void> main() async {
@@ -12,25 +11,20 @@ Future<void> main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSwatch().copyWith(
-          primary: Color(int.parse('0xFFfb458a')),
-        ),
-      ),
+      theme: MyTheme.theme,
       title: 'Ice Cream Shop',
-      initialRoute: "/home",
-      routes: {
-        '/home': (context) => HomeScreen(),
-        '/detail': (context) => DetailScreen(),
-      },
+      initialRoute: MyRoutes.home,
+      routes: MyRoutes.routes,
     );
   }
 }

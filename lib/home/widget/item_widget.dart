@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import '../../core/app/my_color.dart';
 
 class ItemWidget extends StatelessWidget {
   final String? productImage;
   final String? productName;
   final String? productPrice;
   final String? productCategory;
-  final Color? productColor;
+  final String? productColor;
 
   const ItemWidget({
     Key? key,
@@ -23,7 +24,7 @@ class ItemWidget extends StatelessWidget {
       child: Container(
         width: 160,
         decoration: BoxDecoration(
-          color: productColor?.withOpacity(0.3),
+          color: MyColor.transformColor(productColor!)?.withOpacity(0.3),
           borderRadius: BorderRadius.circular(10),
         ),
         child: Column(

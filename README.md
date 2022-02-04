@@ -1,16 +1,12 @@
-# icecreamshop
+# Ice Cream Shop Design Clone
 
-A new Flutter project.
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
+## Design Process
+![alt text](https://firebasestorage.googleapis.com/v0/b/samets-ice-cream-shop.appspot.com/o/Screenshot_1644006695.png?alt=media&token=04a016ff-3d1a-4d95-8436-4e817c06e7b7)
 
-A few resources to get you started if this is your first Flutter project:
+![alt text](https://firebasestorage.googleapis.com/v0/b/samets-ice-cream-shop.appspot.com/o/Screenshot_1644006702.png?alt=media&token=6977ca00-ef07-46b9-900d-e2f337bea1d6)
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Original Concept
+![alt text](https://firebasestorage.googleapis.com/v0/b/samets-ice-cream-shop.appspot.com/o/preview.jpg?alt=media&token=4828b4bd-b89f-4a3e-88ac-396d4225fcb9)

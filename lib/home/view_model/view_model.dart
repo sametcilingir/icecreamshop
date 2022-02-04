@@ -1,6 +1,6 @@
-import 'package:icecreamshop/home/model/ice_cream_model.dart';
-import 'package:icecreamshop/home/model/user_model.dart';
-import 'package:icecreamshop/home/service/firebase/firebase_database_service.dart';
+import '../model/ice_cream_model.dart';
+import '../model/user_model.dart';
+import '../service/firebase/firebase_database_service.dart';
 import 'package:mobx/mobx.dart';
 
 import '../../locator.dart';
