@@ -14,6 +14,9 @@ class IceCreamModel {
   String? productReviews;
   String? productRates;
   String? productAmount;
+  String? productCategory;
+  String? productColor;
+  
   IceCreamModel({
     this.productId,
     this.productName,
@@ -25,9 +28,9 @@ class IceCreamModel {
     this.productReviews,
     this.productRates,
     this.productAmount,
+    this.productCategory,
+    this.productColor,
   });
-
-
 
   factory IceCreamModel.fromJson(Map<String, dynamic>? json) =>
       _$IceCreamModelFromJson(json!);

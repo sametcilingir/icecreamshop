@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 
+import '../../locator.dart';
+import '../view_model/view_model.dart';
+
 class DetailScreen extends StatelessWidget {
-  const DetailScreen({Key? key}) : super(key: key);
+  DetailScreen({Key? key}) : super(key: key);
+  final ViewModel _viewModel = locator<ViewModel>();
 
   @override
   Widget build(BuildContext context) {
@@ -56,6 +60,9 @@ class DetailScreen extends StatelessWidget {
           bottomLeft: Radius.circular(50),
         ),
       ),
+      child: Image.network(
+          _viewModel.iceCreamList![0].productDescriptionImage.toString()),
+      width: 400,
     );
   }
 
@@ -74,7 +81,7 @@ class DetailScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              "Raspberry Ice Cream",
+              "${_viewModel.iceCreamList![0].productName}",
               style: TextStyle(
                 fontSize: 28,
                 fontWeight: FontWeight.bold,
@@ -103,73 +110,107 @@ class DetailScreen extends StatelessWidget {
                 ),
                 Icon(
                   Icons.star,
-                  color: Colors.grey,
+                  color: Colors.grey.withOpacity(0.2),
                 ),
                 SizedBox(
                   width: 5,
                 ),
-                Text('4.9 (229 Reviews)'),
-              ],
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Row(
-                  children: [
-                    ElevatedButton(
-                      onPressed: () {},
-                      child: Icon(
-                        Icons.horizontal_rule_outlined,
-                      ),
-                    ),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    Text("2 Kg"),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    ElevatedButton(
-                      onPressed: () {},
-                      child: Icon(
-                        Icons.add,
-                      ),
-                    ),
-                  ],
-                ),
-                Row(
-                  children: [
-                    Icon(
-                      Icons.monetization_on,
-                      color: Colors.pink,
-                      size: 26,
-                    ),
-                    SizedBox(
-                      width: 5,
-                    ),
-                    Text(
-                      '14.6',
-                      style: TextStyle(
-                        fontSize: 28,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ],
+                Text(
+                  '${_viewModel.iceCreamList![0].productRates} (${_viewModel.iceCreamList![0].productReviews} Reviews)',
+                  style: TextStyle(
+                    fontSize: 14,
+                    color: Colors.grey.withOpacity(0.8),
+                  ),
                 ),
               ],
             ),
-            Text(
-              "xcv\ncxvcv\ncxvxc\nvxc\nvxc",
-              style: TextStyle(
-                fontSize: 18,
+            Expanded(
+              flex: 1,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    children: [
+                      InkWell(
+                        onTap: (() {}),
+                        child: Container(
+                          height: 30,
+                          width: 30,
+                          decoration: BoxDecoration(
+                            color: Color(int.parse('0xFFfb458a')),
+                            borderRadius: BorderRadius.circular(5),
+                          ),
+                          child: Icon(
+                            Icons.horizontal_rule_outlined,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      Text(
+                        "2 Kg",
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black87,
+                        ),
+                      ),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      InkWell(
+                        onTap: (() {}),
+                        child: Container(
+                          height: 30,
+                          width: 30,
+                          decoration: BoxDecoration(
+                            color: Color(int.parse('0xFFfb458a')),
+                            borderRadius: BorderRadius.circular(5),
+                          ),
+                          child: Icon(
+                            Icons.add,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      Icon(
+                        Icons.monetization_on,
+                        color: Colors.pink,
+                        size: 26,
+                      ),
+                      SizedBox(
+                        width: 5,
+                      ),
+                      Text(
+                        _viewModel.iceCreamList![0].productPrice.toString(),
+                        style: TextStyle(
+                          fontSize: 28,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+            Expanded(
+              flex: 2,
+              child: Text(
+                _viewModel.iceCreamList![0].productDescription.toString(),
+                style: TextStyle(
+                  fontSize: 18,
+                ),
               ),
             ),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
-                fixedSize: Size(350, 50),
+                fixedSize: Size(350, 55),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10),
                 ),

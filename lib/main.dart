@@ -15,23 +15,7 @@ Future<void> main() async {
   runApp(MyApp());
 }
 
-class MyApp extends StatefulWidget {
-  const MyApp({Key? key}) : super(key: key);
-
-  @override
-  State<MyApp> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  final ViewModel _viewModel = locator<ViewModel>();
-
-  @override
-  void initState() {
-    super.initState();
-    _viewModel.getUser();
-    _viewModel.getProducts();
-  }
-
+class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -44,8 +28,8 @@ class _MyAppState extends State<MyApp> {
       title: 'Ice Cream Shop',
       initialRoute: "/home",
       routes: {
-        '/home': (context) =>  HomeScreen(),
-        '/detail': (context) =>  DetailScreen(),
+        '/home': (context) => HomeScreen(),
+        '/detail': (context) => DetailScreen(),
       },
     );
   }

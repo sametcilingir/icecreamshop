@@ -11,22 +11,34 @@ class ViewModel = _ViewModelBase with _$ViewModel;
 abstract class _ViewModelBase with Store {
   final FirebaseDatabaseService _firebaseHomeDatabaseService =
       locator<FirebaseDatabaseService>();
+  @action
+  init() async {
+    await getUser();
+    await getProducts();
+  }
 
   @observable
-  UserModel? userModel;
+  late UserModel? userModel = UserModel();
 
   @observable
-  List<IceCreamModel>? iceCreamList;
+  late List<IceCreamModel>? iceCreamList = [];
 
   @action
   Future<void> getUser() async {
-    userModel =
-        await _firebaseHomeDatabaseService.getUser("vkydhbuoZdPXe1sbb5sU");
+    try {
+      userModel =
+          await _firebaseHomeDatabaseService.getUser("vkydhbuoZdPXe1sbb5sU");
+    } on Exception catch (e) {
+      print("Get user error: " + e.toString());
+    }
   }
 
   @action
   Future<void> getProducts() async {
-    iceCreamList =
-        await _firebaseHomeDatabaseService.getProduct();
+    try {
+      iceCreamList = await _firebaseHomeDatabaseService.getProduct();
+    } on Exception catch (e) {
+      print("Get products error: " + e.toString());
+    }
   }
 }

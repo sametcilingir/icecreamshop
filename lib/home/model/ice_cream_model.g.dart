@@ -18,6 +18,8 @@ IceCreamModel _$IceCreamModelFromJson(Map<String, dynamic> json) {
     productReviews: json['productReviews'] as String?,
     productRates: json['productRates'] as String?,
     productAmount: json['productAmount'] as String?,
+    productCategory: json['productCategory'] as String?,
+    productColor: json['productColor'] as String?,
   );
 }
 
@@ -33,4 +35,6 @@ Map<String, dynamic> _$IceCreamModelToJson(IceCreamModel instance) =>
       'productReviews': instance.productReviews,
       'productRates': instance.productRates,
       'productAmount': instance.productAmount,
+      'productCategory': instance.productCategory,
+      'productColor': instance.productColor,
     };

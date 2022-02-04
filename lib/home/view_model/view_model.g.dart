@@ -39,6 +39,13 @@ mixin _$ViewModel on _ViewModelBase, Store {
     });
   }
 
+  final _$initAsyncAction = AsyncAction('_ViewModelBase.init');
+
+  @override
+  Future init() {
+    return _$initAsyncAction.run(() => super.init());
+  }
+
   final _$getUserAsyncAction = AsyncAction('_ViewModelBase.getUser');
 
   @override
