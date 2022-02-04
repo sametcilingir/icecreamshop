@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:icecreamshop/home/view_model/view_model.dart';
 import 'firebase_options.dart';
 import 'home/view/detail_screen.dart';
 import 'home/view/home_screen.dart';
@@ -14,19 +15,37 @@ Future<void> main() async {
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+  const MyApp({Key? key}) : super(key: key);
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  final ViewModel _viewModel = locator<ViewModel>();
+
+  @override
+  void initState() {
+    super.initState();
+    _viewModel.getUser();
+    _viewModel.getProducts();
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.pink,
+        colorScheme: ColorScheme.fromSwatch().copyWith(
+          primary: Color(int.parse('0xFFfb458a')),
+        ),
       ),
       title: 'Ice Cream Shop',
       initialRoute: "/home",
       routes: {
-        '/home': (context) => const HomeScreen(),
-        '/detail': (context) => const DetailScreen(),
+        '/home': (context) =>  HomeScreen(),
+        '/detail': (context) =>  DetailScreen(),
       },
     );
   }

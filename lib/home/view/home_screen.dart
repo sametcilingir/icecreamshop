@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 
+import '../../locator.dart';
+import '../view_model/view_model.dart';
+
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+  HomeScreen({Key? key}) : super(key: key);
+
+  final ViewModel _viewModel = locator<ViewModel>();
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +19,7 @@ class HomeScreen extends StatelessWidget {
               child: headerTop(context),
             ),
             Expanded(
-              flex: 2,
+              flex: 3,
               child: headerBottom(),
             ),
             Expanded(
@@ -26,7 +31,7 @@ class HomeScreen extends StatelessWidget {
               child: bodyMiddle(),
             ),
             Expanded(
-              flex: 7,
+              flex: 8,
               child: bodyBottom(),
             ),
           ],
@@ -37,8 +42,8 @@ class HomeScreen extends StatelessWidget {
 
   Container headerTop(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(20),
-      color: Colors.amber,
+      padding: EdgeInsets.only(left: 20, right: 20, top: 10),
+      color: Colors.white,
       child: ListTile(
         contentPadding: EdgeInsets.all(0),
         title: Text(
@@ -66,7 +71,7 @@ class HomeScreen extends StatelessWidget {
   Container headerBottom() {
     return Container(
       padding: EdgeInsets.all(20),
-      color: Colors.green,
+      color: Colors.white,
       child: Stack(
         alignment: Alignment.centerRight,
         children: [
@@ -76,17 +81,17 @@ class HomeScreen extends StatelessWidget {
               decoration: InputDecoration(
                 hintText: 'Search',
                 hintStyle: TextStyle(
-                  color: Colors.blueGrey,
+                  color: Colors.grey,
                 ),
                 prefixIcon: Padding(
                   padding: const EdgeInsets.only(left: 8.0),
                   child: Icon(
                     Icons.search,
-                    color: Colors.blueGrey,
+                    color: Colors.grey,
                   ),
                 ),
                 filled: true,
-                fillColor: Colors.grey.withOpacity(0.8),
+                fillColor: Colors.grey.withOpacity(0.2),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10),
                   borderSide: BorderSide.none,
@@ -113,12 +118,12 @@ class HomeScreen extends StatelessWidget {
             ),
             icon: Icon(
               Icons.filter_list,
-              color: Colors.grey,
+              color: Colors.white,
             ),
             label: Text(
               'Filter',
               style: TextStyle(
-                color: Colors.grey,
+                color: Colors.white,
               ),
             ),
             onPressed: () {},
@@ -130,7 +135,7 @@ class HomeScreen extends StatelessWidget {
 
   Container bodyTop() {
     return Container(
-      color: Colors.blue,
+      color: Colors.white,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -149,16 +154,16 @@ class HomeScreen extends StatelessWidget {
             children: [
               Container(
                 alignment: Alignment.centerRight,
-                height: 155,
+                height: 135,
                 width: double.infinity,
                 margin: EdgeInsets.only(right: 20, left: 20, top: 20),
-                padding: const EdgeInsets.all(20.0),
+                padding: const EdgeInsets.only(top: 14.0, right: 10),
                 decoration: BoxDecoration(
-                  color: Colors.pink.withOpacity(1),
+                  color: Colors.pink.withOpacity(0.3),
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: Container(
-                  width: 160,
+                  width: 180,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -184,10 +189,10 @@ class HomeScreen extends StatelessWidget {
                             ),
                           ),
                           SizedBox(
-                            width: 40,
+                            width: 30,
                           ),
                           Icon(
-                            Icons.favorite,
+                            Icons.star,
                             color: Colors.yellow,
                           ),
                           SizedBox(
@@ -203,8 +208,8 @@ class HomeScreen extends StatelessWidget {
                             children: [
                               Icon(
                                 Icons.monetization_on,
-                                color: Colors.yellow,
-                                size: 20,
+                                color: Colors.pink,
+                                size: 16,
                               ),
                               SizedBox(
                                 width: 5,
@@ -218,15 +223,11 @@ class HomeScreen extends StatelessWidget {
                               ),
                             ],
                           ),
-                          Material(
-                            color: Colors.white,
+                          FloatingActionButton.small(
+                            backgroundColor: Colors.pink,
+                            onPressed: () {},
                             elevation: 2,
-                            borderRadius: BorderRadius.circular(30),
-                            child: IconButton(
-                              onPressed: () {},
-                              icon: Icon(Icons.add),
-                              color: Colors.pink,
-                            ),
+                            child: Icon(Icons.add),
                           ),
                         ],
                       ),
@@ -234,10 +235,14 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              FlutterLogo(
-                style: FlutterLogoStyle.horizontal,
-                size: 170,
-              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 20.0, left: 10),
+                child: SizedBox(
+                  height: 120,
+                  width: 150,
+                  child: Placeholder(),
+                ),
+              )
             ],
           ),
         ],
@@ -247,7 +252,7 @@ class HomeScreen extends StatelessWidget {
 
   Container bodyMiddle() {
     return Container(
-      color: Colors.red,
+      color: Colors.white,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -262,33 +267,35 @@ class HomeScreen extends StatelessWidget {
             ),
           ),
           Row(
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
               SizedBox(
                 width: 20,
               ),
               Container(
-                width: 130,
-                height: 50,
+                width: 120,
+                height: 40,
                 child: Row(children: [
-                  Expanded(
-                    flex: 2,
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: Colors.pink,
-                        borderRadius: BorderRadius.circular(10),
-                      ),
+                  Container(
+                    height: 40,
+                    width: 40,
+                    decoration: BoxDecoration(
+                      color: Colors.pink,
+                      borderRadius: BorderRadius.circular(5),
                     ),
                   ),
-                  Expanded(
-                    flex: 3,
-                    child: Container(
-                      padding: EdgeInsets.all(10),
+                  Container(
+                    height: 40,
+                    width: 80,
+                    padding: EdgeInsets.all(10),
+                    decoration: BoxDecoration(
                       color: Colors.pink.withOpacity(0.5),
-                      child: Text(
-                        'Vanilla',
-                        style: TextStyle(
-                          fontSize: 14,
-                        ),
+                      borderRadius: BorderRadius.circular(5),
+                    ),
+                    child: Text(
+                      'Vanilla',
+                      style: TextStyle(
+                        fontSize: 14,
                       ),
                     ),
                   ),
@@ -304,7 +311,7 @@ class HomeScreen extends StatelessWidget {
   Container bodyBottom() {
     return Container(
       padding: EdgeInsets.all(20),
-      color: Colors.yellow,
+      color: Colors.white,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -321,13 +328,16 @@ class HomeScreen extends StatelessWidget {
           Row(
             children: [
               Container(
-                width: 140,
-                height: 170,
+                width: 160,
+                height: 200,
+                padding:
+                    EdgeInsets.only(right: 10, left: 10, top: 10, bottom: 10),
                 decoration: BoxDecoration(
-                  color: Colors.pink,
+                  color: Colors.blue.withOpacity(0.3),
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     FlutterLogo(
                       style: FlutterLogoStyle.markOnly,
@@ -353,8 +363,8 @@ class HomeScreen extends StatelessWidget {
                           children: [
                             Icon(
                               Icons.monetization_on,
-                              color: Colors.yellow,
-                              size: 20,
+                              color: Colors.pink,
+                              size: 16,
                             ),
                             SizedBox(
                               width: 5,
@@ -368,15 +378,11 @@ class HomeScreen extends StatelessWidget {
                             ),
                           ],
                         ),
-                        Material(
-                          color: Colors.white,
+                        FloatingActionButton.small(
+                          backgroundColor: Colors.pink,
+                          onPressed: () {},
                           elevation: 2,
-                          borderRadius: BorderRadius.circular(30),
-                          child: IconButton(
-                            onPressed: () {},
-                            icon: Icon(Icons.add),
-                            color: Colors.pink,
-                          ),
+                          child: Icon(Icons.add),
                         ),
                       ],
                     ),
